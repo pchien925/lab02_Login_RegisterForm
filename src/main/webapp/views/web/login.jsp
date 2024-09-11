@@ -19,7 +19,7 @@
 						src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg"
 						alt="logo" width="100">
 				</div>
-				<form action="./home.jsp">
+				<form action="home" method="get">
 					<div class="mb-3 mt-3">
 						<label for="email" class="form-label">Email:</label> <input
 							type="email" class="form-control" id="email"
