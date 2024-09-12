@@ -52,7 +52,7 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public void insertRegister(User user) {
-		String sqlStr = "insert into users(username, password, email, fullname, phone) values(?, ?, ?, ?, ?)";
+		String sqlStr = "insert into users(username, password, email, fullname, phone, status, code) values(?, ?, ?, ?, ?, ?)";
 		try {
 			new DBConnection();
 			conn = DBConnection.getConnection();
@@ -63,6 +63,8 @@ public class UserDaoImpl implements IUserDao {
 			ps.setString(3, user.getEmail());
 			ps.setString(4, user.getFullname());
 			ps.setString(5, user.getPhone());
+			ps.setInt(6, user.getStatus());
+			ps.setString(7, user.getCode());
 			ps.executeUpdate();
 
 			ps.close();

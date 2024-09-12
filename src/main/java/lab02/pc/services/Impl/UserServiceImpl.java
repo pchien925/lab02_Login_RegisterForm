@@ -40,17 +40,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public boolean register(String email, String password, String username, String fullname, String phone) {
-		if (this.checkExistEmail(email)) {
-			return false;
-		}
-		if (this.checkExistPhone(phone)) {
-			return false;
-		}
-		if (this.checkExistUsername(username)) {
-			return false;
-		}
-		userDAO.insertRegister(new User(username, password, email, fullname, phone));
+	public boolean register(String username, String password, String email, String fullname, String phone, int status, String code) {
+		userDAO.insertRegister(new User(username, password, email, fullname, phone, status, code));
 		return true;
 	}
 

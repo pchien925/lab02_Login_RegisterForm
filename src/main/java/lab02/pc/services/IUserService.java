@@ -10,7 +10,7 @@ public interface IUserService {
 	User get(String username);
 	
 	User login(String username, String password);
-	boolean register(String email, String password, String username, String fullname, String phone);
+	boolean register(String email, String password, String username, String fullname, String phone, int status, String code);
 	
 	boolean checkExistEmail(String email);
 	boolean checkExistUsername(String username);
