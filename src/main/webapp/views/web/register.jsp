@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,22 +31,32 @@
 										up</p>
 
 									<form class="mx-1 mx-md-4" action="register" method="post">
-
+										<div class="container">
+											<div class="row">
+												<div class="col">
+													<c:if test="${not empty message}">
+														<div class="alert alert-danger">
+															<p class="text-center">${message}</p>
+														</div>
+													</c:if>
+												</div>
+											</div>
+										</div>
 										<div class="d-flex flex-row align-items-center mb-4">
 											<i class="fas fa-user fa-lg me-3 fa-fw"></i>
 											<div data-mdb-input-init class="form-outline flex-fill mb-0">
-												<input type="text" name ="username" id="username" class="form-control" />
-												<label class="form-label" for="username">Your
-													Username</label>
+												<input type="text" name="username" id="username"
+													class="form-control" /> <label class="form-label"
+													for="username">Your Username</label>
 											</div>
 										</div>
 
 										<div class="d-flex flex-row align-items-center mb-4">
 											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 											<div data-mdb-input-init class="form-outline flex-fill mb-0">
-												<input type="text" name="email" id="email" class="form-control" />
-												<label class="form-label" for="email">Your
-													Email</label>
+												<input type="text" name="email" id="email"
+													class="form-control" /> <label class="form-label"
+													for="email">Your Email</label>
 											</div>
 										</div>
 
@@ -63,22 +74,21 @@
 											<div data-mdb-input-init class="form-outline flex-fill mb-0">
 												<input type="text" name="fullname" id="fullname"
 													class="form-control" /> <label class="form-label"
-													for="fullname">Your Fullname</label>
+													for="fullname">Your full name:</label>
 											</div>
 										</div>
-										
+
 										<div class="d-flex flex-row align-items-center mb-4">
 											<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 											<div data-mdb-input-init class="form-outline flex-fill mb-0">
 												<input type="text" name="phone" id="phone"
 													class="form-control" /> <label class="form-label"
-													for="phone">Your Phonenumber</label>
+													for="phone">Your phone:</label>
 											</div>
 										</div>
-
+										<p class="text-danger">${message}</p>
 										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-											<button type="submit" data-mdb-button-init
-												data-mdb-ripple-init class="btn btn-primary btn-lg">Register</button>
+											<button type="submit" class="btn btn-primary">Register</button>
 										</div>
 
 									</form>

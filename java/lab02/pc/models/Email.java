@@ -63,20 +63,4 @@ public class Email {
 
 		return pr;
 	}
-
-//	public static void main(String[] args) {
-//		try {
-//			User user = new User();
-//			user.setEmail("pcchien250904@gmail.com");
-//
-//			// Sending email without attachment
-//
-//			boolean it;
-//			Email em = new Email();
-//			it = em.sendMail(user); 
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 }

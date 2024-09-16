@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="mb-3 mt-3">
-		<label for="Verify" class="form-label">Code:</label> <input
-			type="text" class="form-control" placeholder="Enter code" name="code">
-		<button type="submit" class="btn">Basic</button>
-	</div>
+	<form action="verifyCode" method="post">
+		<div class="input-group">
+			<input type="text" name="authcode" class="form-control margin-top-20">
+		</div>
+		<input type="submit" value="kích hoạt"
+			class="btn-u btn-u-sea-shop margin-top-20">
+	</form>
 </body>
 </html>
