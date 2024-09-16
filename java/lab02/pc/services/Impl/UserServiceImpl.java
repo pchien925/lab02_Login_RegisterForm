@@ -1,5 +1,7 @@
 package lab02.pc.services.Impl;
 
+import java.sql.Date;
+
 import lab02.pc.dao.IUserDao;
 import lab02.pc.dao.Impl.UserDaoImpl;
 import lab02.pc.models.User;
@@ -20,6 +22,11 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
+	public void updataStatus(User user) {
+		userDAO.updataStatus(user);
+	}
+
+	@Override
 	public User get(int id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -33,16 +40,22 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User login(String username, String password) {
-		User user = userDAO.findUser(username);
+		User user = userDAO.findUserByUsername(username);
 		if (user != null && password.equals(user.getPassword()))
 			return user;
 		return null;
 	}
 
 	@Override
-	public boolean register(String username, String password, String email, String fullname, String phone, int status, String code) {
-		userDAO.insertRegister(new User(username, password, email, fullname, phone, status, code));
+	public boolean register(String username, String password, String email, String fullname, String phone, int status,
+			String code, int roleid, Date createDate) {
+		userDAO.insertRegister(new User(username, password, fullname, email, phone, status, code, roleid, createDate));
 		return true;
+	}
+
+	@Override
+	public boolean isActiveAccount(User user) {
+		return userDAO.isActiveAccount(user);
 	}
 
 	@Override
