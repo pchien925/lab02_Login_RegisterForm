@@ -22,7 +22,7 @@
 						src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg"
 						alt="logo" width="100">
 				</div>
-				<form action="/lab02/login" method="post">
+				<form action="/ltweb_weekly_proj/login" method="post">
 					<div class="mb-3 mt-3">
 						<label for="email" class="form-label">Username:</label> <input
 							type="text" class="form-control" placeholder="Enter username"
