@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -41,6 +41,9 @@
 					</div>
 					<p class="text-center" style="color: red">${message}</p>
 					<button type="submit" class="btn btn-primary">Submit</button>
+					<div class="m-3 p-1">
+						<a href="forgotpassword">Quên mật khẩu</a>
+					</div>
 				</form>
 			</div>
 		</div>

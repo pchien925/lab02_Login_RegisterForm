@@ -34,8 +34,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User get(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.findUserByUsername(username);
 	}
 
 	@Override

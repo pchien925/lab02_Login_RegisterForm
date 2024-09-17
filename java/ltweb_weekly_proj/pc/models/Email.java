@@ -52,6 +52,42 @@ public class Email {
 		}
 		return test;
 	}
+	
+	public boolean getPassword(User user)
+	{
+		boolean test = false;
+		String toMail = user.getEmail();
+		String fromMail = "phamchien9254@gmail.com";
+		String password = "oqvc caqw eboj zbwg";
+
+		try {
+			Properties pr = configMail(new Properties());
+
+			Session session = Session.getInstance(pr, new Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(fromMail, password);
+				}
+			});
+
+			Message mess = new MimeMessage(session);
+			mess.setHeader("Content-Type", "text/plain; charset=UTF-8");
+
+			mess.setFrom(new InternetAddress(fromMail));
+
+			mess.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
+			mess.setSubject("Forgotpassword");
+
+			mess.setText("Mật khẩu của bạn là: " + user.getPassword());
+
+			Transport.send(mess);
+
+			test = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return test;
+	}
 
 	public Properties configMail(Properties pr) {
 		pr.setProperty("mail.smtp.host", "smtp.gmail.com");

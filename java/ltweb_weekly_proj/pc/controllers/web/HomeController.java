@@ -23,7 +23,7 @@ import javax.swing.RepaintManager;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet(urlPatterns = { "/home", "/login", "/register", "/wating", "/verifyCode" })
+@WebServlet(urlPatterns = { "/home", "/login", "/register", "/wating", "/verifyCode", "/logout", "/forgotpassword" })
 public class HomeController extends HttpServlet {
 
 	IUserService userService = new UserServiceImpl();
@@ -51,8 +51,29 @@ public class HomeController extends HttpServlet {
 			getWaiting(request, response);
 		} else if (url.contains("verifyCode")) {
 			request.getRequestDispatcher("/views/web/verify.jsp").forward(request, response);
+		} else if (url.contains("logout")) {
+			getLogout(request, response);
+		} else if (url.contains("forgotpassword")) {
+			request.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(request, response);
 		} else
 			homePage(request, response);
+	}
+
+	private void getLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("userAccount");
+
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (Constant.COOKIE_REMEMBER.equals("username")) {
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+					break;
+				}
+			}
+		}
+		response.sendRedirect("./login");
 	}
 
 	private void getWaiting(HttpServletRequest request, HttpServletResponse response) {
@@ -108,8 +129,39 @@ public class HomeController extends HttpServlet {
 			//
 		} else if (url.contains("verifyCode")) {
 			postVerifyCode(request, response);
+		} else if (url.contains("forgotpassword")) {
+			postForgotpassword(request, response);
 		}
 
+	}
+
+	private void postForgotpassword(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		{
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+
+			String username = request.getParameter("username");
+			String email = request.getParameter("email");
+
+			User user = userService.get(username);
+			if (user == null && user.getEmail().equals(email) && user.getUsername().equals(username)) {
+				Email em = new Email();
+				boolean sendMail = em.getPassword(user);
+
+				if (sendMail) {
+					request.setAttribute("message", "Vui lòng kiểm tra mail để lấy lại mật khẩu");
+				} else {
+					request.setAttribute("error", "Lỗi gửi mail");
+				}
+			} else {
+				request.setAttribute("error", "Tên tài khoản hoặc emal không chính xác");
+				request.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(request, response);
+				return;
+			}
+
+			response.sendRedirect(request.getContextPath() + "/login");
+		}
 	}
 
 	private void postVerifyCode(HttpServletRequest request, HttpServletResponse response)
@@ -250,13 +302,6 @@ public class HomeController extends HttpServlet {
 		cookie.setHttpOnly(true);
 		cookie.setSecure(true);
 		cookie.setPath("/");
-		response.addCookie(cookie);
-	}
-
-	private void removeRememberMe(HttpServletResponse response) {
-		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, null);
-		cookie.setMaxAge(0);
-		cookie.setPath("/"); 
 		response.addCookie(cookie);
 	}
 

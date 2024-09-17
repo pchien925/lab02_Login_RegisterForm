@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>TRANG CHỦ</h1>
+
+<a href="logout" class="link-secondary">Logout</a>
 </body>
 </html>
