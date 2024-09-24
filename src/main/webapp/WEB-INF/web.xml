@@ -62,4 +62,24 @@
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/LogoutController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProfileController</display-name>
+    <servlet-name>ProfileController</servlet-name>
+    <servlet-class>ltweb_weekly_proj.pc.controllers.ProfileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileController</servlet-name>
+    <url-pattern>/ProfileController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MultiPartServletController</display-name>
+    <servlet-name>MultiPartServletController</servlet-name>
+    <servlet-class>ltweb_weekly_proj.pc.controllers.MultiPartServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MultiPartServletController</servlet-name>
+    <url-pattern>/MultiPartServletController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -26,6 +26,14 @@ public class User implements Serializable {
 		super();
 	}
 
+	public User(String username, String images, String fullname, String phone) {
+		super();
+		this.username = username;
+		this.images = images;
+		this.fullname = fullname;
+		this.phone = phone;
+	}
+
 	public User(String username, String password, String images, String fullname, String email, String phone,
 			int status, String code, int roleid, Date createDate) {
 		super();
@@ -56,7 +64,6 @@ public class User implements Serializable {
 		this.roleid = roleid;
 		this.createDate = createDate;
 	}
-
 
 	public User(String username, String password, String fullname, String email, String phone, int status, String code,
 			int roleid, Date createDate) {

@@ -35,17 +35,20 @@
 					<li><a href="shop-account.html">My Account</a></li>
 					<li><a href="shop-wishlist.html">My Wishlist</a></li>
 					<li><a href="shop-checkout.html">Checkout</a></li>
-					<li><c:choose>
-							<c:when test="${sessionScope.userAccount == null}">
-								<a href="${pageContext.request.contextPath}/login">Login </a>
-								<a href="${pageContext.request.contextPath}/register">Register
-								</a>
-							</c:when>
-							<c:otherwise>
-								<a href="${pageContext.request.contextPath}/home">${sessionScope.userAccount.fullname}</a>
-								<a href="${pageContext.request.contextPath}/logout">Logout</a>
-							</c:otherwise>
-						</c:choose></li>
+					<c:choose>
+						<c:when test="${sessionScope.userAccount == null}">
+							<li><a href="${pageContext.request.contextPath}/login">Login
+							</a></li>
+							<li><a href="${pageContext.request.contextPath}/register">Register
+							</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageContext.request.contextPath}/user/profile">My
+									profile</a></li>
+							<li><a href="${pageContext.request.contextPath}/home">${sessionScope.userAccount.fullname}</a></li>
+							<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 			<!-- END TOP BAR MENU -->
@@ -63,7 +66,7 @@
 			class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
 		<!-- BEGIN CART -->
-		<div class="top-cart-block">
+		<!--	<div class="top-cart-block">
 			<div class="top-cart-info">
 				<a href="javascript:void(0);" class="top-cart-info-count">3
 					items</a> <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
@@ -129,6 +132,7 @@
 				</div>
 			</div>
 		</div>
+		-->
 		<!--END CART -->
 
 		<!-- BEGIN NAVIGATION -->

@@ -44,7 +44,24 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
+		String sqlStr = "update users set fullname = ?, phone = ?, images = ? where username = ?";
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			ps = conn.prepareStatement(sqlStr);
+
+	
+			ps.setString(3, user.getImages());
+			ps.setString(1, user.getFullname());
+			ps.setString(2, user.getPhone());
+			ps.setString(4, user.getUsername());
+			ps.executeUpdate();
+
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
