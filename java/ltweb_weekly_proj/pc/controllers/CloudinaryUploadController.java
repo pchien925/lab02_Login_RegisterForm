@@ -53,7 +53,6 @@ public class CloudinaryUploadController extends HttpServlet {
 			try {
 				File uploadedFile = convertPartToFile(filePart); // Tải lên tệp
 				Map uploadResult = cloudinary.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
-				User user = new User();
 				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("url_image", (String) uploadResult.get("secure_url"));
