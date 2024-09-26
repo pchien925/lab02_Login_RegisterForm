@@ -43,26 +43,26 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public void update(User user) {
+	public boolean updateProfile(User user) {
 		String sqlStr = "update users set fullname = ?, phone = ?, images = ? where username = ?";
 		try {
 			new DBConnection();
 			conn = DBConnection.getConnection();
 			ps = conn.prepareStatement(sqlStr);
 
-	
-			ps.setString(3, user.getImages());
 			ps.setString(1, user.getFullname());
 			ps.setString(2, user.getPhone());
+			ps.setString(3, user.getImages());
 			ps.setString(4, user.getUsername());
 			ps.executeUpdate();
 
 			ps.close();
 			conn.close();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return false;
 	}
 
 	@Override

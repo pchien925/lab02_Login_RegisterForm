@@ -3,6 +3,8 @@ package ltweb_weekly_proj.pc.models;
 import java.io.Serializable;
 import java.sql.Date;
 
+import lombok.Builder;
+
 public class User implements Serializable {
 	/**
 	 * 

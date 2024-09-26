@@ -16,8 +16,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void update(User user) {
-		userDAO.update(user);
+	public boolean updateProfile(User user) {
+		return userDAO.updateProfile(user);
 	}
 
 	@Override

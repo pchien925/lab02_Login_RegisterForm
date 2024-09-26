@@ -7,7 +7,7 @@ import ltweb_weekly_proj.pc.models.User;
 public interface IUserService {
 	void insert(User user);
 
-	void update(User user);
+	boolean updateProfile(User user);
 
 	void updataStatus(User user);
 

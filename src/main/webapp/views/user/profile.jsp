@@ -23,12 +23,14 @@
 				<div
 					class="d-flex flex-column align-items-center text-center p-3 py-5">
 					<img class="rounded-circle mt-5" width="150px"
-						src="/resources/tkbnam3.jsp"><span class="font-weight-bold">Edogaru</span><span
-						class="text-black-50">edogaru@mail.com.my</span><span> </span>
+						src="${sessionScope.url_image}"><span> <a
+						href="/ltweb_weekly_proj/cloudinaryUpload"
+						class="btn btn-info" role="button">Link Button</a>
+					</span>
 				</div>
 			</div>
 			<div class="col-md-5 border-right">
-				<form action="profile" method="post">
+				<form action="/user/profile" method="post">
 					<div class="p-3 py-5">
 						<div
 							class="d-flex justify-content-between align-items-center mb-3">
@@ -53,13 +55,13 @@
 									value="${sessionScope.userAccount.email}" name="email">
 							</div>
 						</div>
+						<p>${error}</p>
 						<div class="my-5 text-center">
 							<button class="btn btn-primary profile-button" type="submit">Update
 								Profile</button>
 						</div>
 					</div>
 				</form>
-			</div>
 		</div>
 	</div>
 </body>

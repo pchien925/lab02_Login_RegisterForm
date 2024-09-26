@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/commons/taglib.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +10,17 @@
 </head>
 <body>
 	<div class="col-md-9 col-sm-9">
-		<h1>Servlet Multipart</h1>
+		<h1>Cloudinary Upload Multipart</h1>
 		<div class="content-form-page"></div>
-
-		<form method="post" action="MultiPartServletController"
+		<c:if test="${sessionScope.userAccount != null}">
+			<img alt="profile_img" src="${sessionScope.url_image}">
+		</c:if>
+		<form action="cloudinaryUpload" method="post"
 			enctype="multipart/form-data">
-
-			Choose a file: <input type="file" name="multiPartServlet" /> <input
-				type="submit" value="Upload" />
+			<label for="file">Choose an image file:</label> <input type="file"
+				id="file" name="file"> <br> <br> <input
+				type="submit" value="Upload">
 		</form>
 	</div>
-	</div>
-
 </body>
 </html>
